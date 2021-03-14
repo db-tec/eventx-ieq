@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
+from django.contrib import messages
 from django.template import loader
 
 from .models import Evento, Inscricao
@@ -12,12 +13,23 @@ def index(request):
     }
     return render(request,'index.html', context)
 
-def fazer_inscricao(request):
-    form = InscricaoForm(request.POST or None)
-    if form.is_valid():
-        form.save()
-        return redirect('index')
-    return render(request, 'inscricao.html', {'form': form})
+def inscricao(request):
+    if str(request.method) == 'POST':
+        form = EventoForm(request.POST)
+        if form.is_valid():
+            form.save()
+
+            messages.success(request, 'Inscrição realizada com sucesso.')
+        else:
+            messages.error(request, 'Erro, inscrição não realizada.')
+    else:
+        form = Inscricao.objects.all()
+    context = {
+        'form': form,
+        'eventos': Evento.objects.all(),
+        'inscritos': Inscricao.objects.all().count()        
+    }
+    return render(request, 'inscricao.html', context)
 
 def error404(request, exception):
     template = loader.get_template('404.html')

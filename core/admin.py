@@ -3,7 +3,7 @@ from .models import Evento, Inscricao
 
 @admin.register(Evento)
 class EventoAdmin(admin.ModelAdmin):
-    list_display = ('nome','descricao','data_inicial', 'quantidade','criado', 'ativo')
+    list_display = ('id','nome','descricao','data_inicial', 'quantidade','criado', 'ativo')
 
 @admin.register(Inscricao)
 class InscricaoAdmin(admin.ModelAdmin):
