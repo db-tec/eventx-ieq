@@ -89,13 +89,13 @@ WSGI_APPLICATION = 'eventx.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 # Banco de dado PostGres no heroku
-'''
+
 DATABASES = {
     'default': dj_database_url.config()
 }
-'''
- 
 
+ 
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -106,7 +106,7 @@ DATABASES = {
         'PORT': '3306'
     }
 }
-
+'''
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
