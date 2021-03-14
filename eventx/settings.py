@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+from django.conf.urls.static import static
 import os
 
 import dj_database_url
@@ -20,7 +21,8 @@ import os
 pymysql.install_as_MySQLdb()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+# BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 # Quick-start development settings - unsuitable for production
@@ -30,7 +32,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '*d0r-!ulypk7e7br@-v-#==ao&gvi0ojru2+nnjrrs+^fuci3r'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -93,7 +95,7 @@ DATABASES = {
 }
 '''
  
-'''
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -104,7 +106,7 @@ DATABASES = {
         'PORT': '3306'
     }
 }
-'''
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -143,12 +145,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfile')
-MEDIA_URL = 'media/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Ao sair do admin voltar para index
-LOGOUT_REDIRECT_URL = 'index'
+# LOGOUT_REDIRECT_URL = 'index'
 
 # Configuração de e-mail
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
