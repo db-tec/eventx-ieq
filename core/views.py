@@ -23,9 +23,10 @@ def inscricao(request):
         else:
             messages.error(request, 'Erro, inscrição não realizada.')
     else:
-        eventos = Inscricao.objects.all()
+        form = Inscricao.objects.all()
     context = {
-        'eventos': eventos,
+        'form': form,
+        'eventos': Evento.objects.all(),
         'inscritos': Inscricao.objects.all().count()        
     }
     return render(request, 'inscricao.html', context)
