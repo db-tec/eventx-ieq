@@ -92,9 +92,7 @@ WSGI_APPLICATION = 'eventx.wsgi.application'
 
 DATABASES = {
     'default': dj_database_url.config()
-}
-
- 
+} 
 '''
 DATABASES = {
     'default': {
